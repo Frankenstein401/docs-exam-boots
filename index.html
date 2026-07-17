@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laravel Exam Boots — Docs</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="https://laravel.com/img/logomark.min.svg">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brutal: {
+                            yellow: '#facc15',
+                            orange: '#fb923c',
+                            pink: '#f472b6',
+                            cyan: '#22d3ee',
+                            lime: '#a3e635',
+                            purple: '#c084fc',
+                            bg: '#fffbeb',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        body: ['Lexend', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Lexend:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-brutal-bg text-black min-h-screen font-body selection:bg-black selection:text-white antialiased">
+
+    <!-- Header / Navbar (Brutalist style) -->
+    <header class="sticky top-0 z-50 bg-white border-b-4 border-black shadow-[0_4px_0_0_#000]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-[#FF2D20] p-3 border-2 border-black shadow-[2px_2px_0_0_#000] rounded-none flex items-center justify-center">
+                    <i class="fa-brands fa-laravel text-2xl text-white"></i>
+                </div>
+                <div>
+                    <span class="font-extrabold text-2xl tracking-tight font-sans">Laravel Exam Boots</span>
+                    <span class="ml-2 text-xs bg-brutal-lime border-2 border-black text-black px-2 py-0.5 font-bold shadow-[1px_1px_0_0_#000]">v1.2.5</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <div class="hidden sm:flex items-center bg-white border-2 border-black shadow-[2px_2px_0_0_#000]">
+                    <i class="fa-solid fa-search text-black px-3 text-sm"></i>
+                    <input type="text" id="headerSearch" placeholder="Cari: auth, crud, install, export..." class="w-48 lg:w-64 py-2 pr-3 text-sm font-bold text-black focus:outline-none placeholder:text-slate-400">
+                </div>
+                <a href="#install" class="bg-brutal-orange text-black border-2 border-black px-4 py-2 font-extrabold text-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_#000] transition-all shadow-[4px_4px_0_0_#000]">
+                    Mulai Belajar <i class="fa-solid fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner (Brutalist Banner) -->
+    <section class="relative py-20 bg-brutal-cyan border-b-4 border-black shadow-[0_4px_0_0_#000]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+            <div class="inline-flex items-center space-x-2 bg-white border-2 border-black px-3 py-1 text-black text-xs font-bold mb-6 shadow-[2px_2px_0_0_#000]">
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500 border border-black"></span>
+                <span>Boots Up, Code Fast, Pass the Exam!</span>
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight font-sans text-black mb-6 max-w-4xl mx-auto leading-none uppercase">
+                Hemat Waktu Setup Ujian Sertifikasi Hingga <span class="bg-white border-2 border-black px-2 text-red-500 shadow-[4px_4px_0_0_#000]">90%</span>
+            </h1>
+            <p class="text-lg font-medium text-black max-w-2xl mx-auto mb-10 leading-relaxed bg-white border-2 border-black p-4 shadow-[4px_4px_0_0_#000]">
+                CLI Component & Auth Generator yang menyuntikkan kode arsitektur modern (Model, Migration, Controller, Service, Request, Resource) langsung ke dalam project Laravel kamu.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-4">
+                <div class="bg-white border-4 border-black px-5 py-3 flex items-center space-x-3 max-w w-full sm:w-auto font-mono text-sm shadow-[6px_6px_0_0_#000]">
+                    <span class="text-red-500 font-extrabold">$</span>
+                    <span class="text-black select-all font-bold" id="installCmd">composer require franken/laravel-exam-boots</span>
+                    <button onclick="copyText('installCmd', this)" class="text-black hover:text-red-500 transition-colors pl-2 border-l-2 border-black">
+                        <i class="fa-regular fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Layout -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="flex flex-col lg:flex-row gap-12">
+            
+            <!-- Sidebar Navigation (Brutalist styled) -->
+            <aside class="lg:w-72 shrink-0">
+                <nav class="sticky top-28 space-y-8 bg-white border-4 border-black p-6 shadow-[6px_6px_0_0_#000]">
+                    <div>
+                        <h3 class="text-sm font-black text-black uppercase tracking-wider mb-3 border-b-2 border-black pb-1">Persiapan</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#install" class="block py-1 px-2 font-bold text-black hover:bg-brutal-yellow hover:border-black border border-transparent transition-all"><i class="fa-solid fa-download w-5"></i> Instalasi</a></li>
+                            <li><a href="#doctor" class="block py-1 px-2 font-bold text-black hover:bg-brutal-lime hover:border-black border border-transparent transition-all"><i class="fa-solid fa-user-doctor w-5"></i> Pre-flight Doctor</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-black text-black uppercase tracking-wider mb-3 border-b-2 border-black pb-1">Panduan Ujian</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#guides" class="block py-1 px-2 font-bold text-black hover:bg-brutal-orange hover:border-black border border-transparent transition-all"><i class="fa-solid fa-compass w-5"></i> Alur Langkah Ujian</a></li>
+                            <li><a href="#install-oneclick" class="block py-1 px-2 font-bold text-black hover:bg-brutal-orange hover:border-black border border-transparent transition-all"><i class="fa-solid fa-rocket w-5"></i> One-Shot Install</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-black text-black uppercase tracking-wider mb-3 border-b-2 border-black pb-1">Autentikasi & Docs</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#auth" class="block py-1 px-2 font-bold text-black hover:bg-brutal-pink hover:border-black border border-transparent transition-all"><i class="fa-solid fa-lock w-5"></i> Setup Auth</a></li>
+                            <li><a href="#scramble" class="block py-1 px-2 font-bold text-black hover:bg-brutal-purple hover:border-black border border-transparent transition-all"><i class="fa-solid fa-book-open w-5"></i> API Scramble Docs</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-black text-black uppercase tracking-wider mb-3 border-b-2 border-black pb-1">CRUD & Generator</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#add" class="block py-1 px-2 font-bold text-black hover:bg-brutal-orange hover:border-black border border-transparent transition-all"><i class="fa-solid fa-folder-plus w-5"></i> Eject CRUD (forge:add)</a></li>
+                            <li><a href="#relation" class="block py-1 px-2 font-bold text-black hover:bg-brutal-cyan hover:border-black border border-transparent transition-all"><i class="fa-solid fa-link w-5"></i> Relasi Interaktif</a></li>
+                            <li><a href="#response" class="block py-1 px-2 font-bold text-black hover:bg-brutal-yellow hover:border-black border border-transparent transition-all"><i class="fa-solid fa-reply w-5"></i> ApiResponse Trait</a></li>
+                            <li><a href="#policy" class="block py-1 px-2 font-bold text-black hover:bg-brutal-lime hover:border-black border border-transparent transition-all"><i class="fa-solid fa-shield-halved w-5"></i> Policy Generator</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-black text-black uppercase tracking-wider mb-3 border-b-2 border-black pb-1">Ekspor & Pengujian</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#test" class="block py-1 px-2 font-bold text-black hover:bg-brutal-pink hover:border-black border border-transparent transition-all"><i class="fa-solid fa-vial w-5"></i> Test Skeleton</a></li>
+                            <li><a href="#export" class="block py-1 px-2 font-bold text-black hover:bg-brutal-cyan hover:border-black border border-transparent transition-all"><i class="fa-solid fa-file-export w-5"></i> Ekspor Excel/PDF</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-black text-black uppercase tracking-wider mb-3 border-b-2 border-black pb-1">Lainnya</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#cheatsheet" class="block py-1 px-2 font-bold text-black hover:bg-brutal-yellow hover:border-black border border-transparent transition-all"><i class="fa-solid fa-clipboard-list w-5"></i> Cheatsheet Offline</a></li>
+                            <li><a href="#undo" class="block py-1 px-2 font-bold text-black hover:bg-brutal-orange hover:border-black border border-transparent transition-all"><i class="fa-solid fa-rotate-left w-5"></i> Rollback (forge:undo)</a></li>
+                            <li><a href="#seed-admin" class="block py-1 px-2 font-bold text-black hover:bg-brutal-lime hover:border-black border border-transparent transition-all"><i class="fa-solid fa-user-plus w-5"></i> Admin Seeder</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </aside>
+
+            <!-- Main Documentation Content -->
+            <div class="flex-1 space-y-20 max-w-4xl" id="contentContainer">
+                
+                <!-- No Results Card (Brutalist style) -->
+                <div id="noResults" class="hidden bg-brutal-pink border-4 border-black p-8 text-center shadow-[8px_8px_0_0_#000]">
+                    <i class="fa-solid fa-face-frown text-5xl mb-4 text-black"></i>
+                    <h3 class="text-2xl font-black uppercase">Hasil tidak ditemukan</h3>
+                    <p class="text-black font-bold mt-2">Coba gunakan kata kunci lain seperti "auth", "add", "relation", "test", atau "undo".</p>
+                </div>
+
+                <!-- Section: Instalasi -->
+                <section id="install" class="scroll-mt-24 bg-white border-4 border-black p-8 shadow-[8px_8px_0_0_#000]">
+                    <h2 class="text-4xl font-extrabold font-sans text-black mb-6 flex items-center space-x-3 uppercase">
+                        <i class="fa-solid fa-download"></i>
+                        <span>Instalasi & Pengenalan</span>
+                    </h2>
+                    
+                    <!-- Info Box: Fungsi & Kapan Digunakan -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 border-4 border-black p-4 bg-brutal-yellow shadow-[4px_4px_0_0_#000]">
+                        <div>
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-lightbulb"></i> Fungsi</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Memasang package generator ke dalam project Laravel lokal kamu sehingga perintah-perintah Artisan baru siap digunakan.
+                            </p>
+                        </div>
+                        <div class="border-t-2 md:border-t-0 md:border-l-2 border-black pt-4 md:pt-0 md:pl-4">
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-clock"></i> Kapan Digunakan</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Langkah pertama setelah kamu menginisialisasi project Laravel baru saat ujian, sebelum menulis kode fitur apa pun.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-black leading-relaxed font-medium mb-6">
+                        Laravel Exam Boots menggunakan konsep <span class="bg-brutal-yellow px-1 border border-black font-bold">ejection (shadcn/ui philosophy)</span>. Kode-kode generator langsung diletakkan di dalam folder `app/` agar kamu memiliki kontrol 100% saat kustomisasi soal ujian.
+                    </p>
+                    <div class="bg-brutal-bg border-4 border-black p-6 shadow-[4px_4px_0_0_#000]">
+                        <h3 class="text-xl font-black text-black mb-4 uppercase">Langkah Instalasi</h3>
+                        <ol class="space-y-4 list-decimal list-inside text-black font-medium">
+                            <li>Jalankan composer require di root project Laravel kamu:
+                                <div class="bg-black text-white border-2 border-black px-4 py-2.5 font-mono text-sm mt-2 flex items-center justify-between">
+                                    <span id="installStep">composer require franken/laravel-exam-boots</span>
+                                    <button onclick="copyText('installStep', this)" class="text-brutal-yellow hover:text-white transition-colors">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </li>
+                            <li>Pastikan package ter-load dengan benar:
+                                <div class="bg-black text-white border-2 border-black px-4 py-2.5 font-mono text-sm mt-2 flex items-center justify-between">
+                                    <span id="listStep">php artisan list | grep exam</span>
+                                    <button onclick="copyText('listStep', this)" class="text-brutal-yellow hover:text-white transition-colors">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </section>
+
+                <!-- Section: Doctor -->
+                <section id="doctor" class="scroll-mt-24 bg-white border-4 border-black p-8 shadow-[8px_8px_0_0_#000]">
+                    <h2 class="text-4xl font-extrabold font-sans text-black mb-6 flex items-center space-x-3 uppercase">
+                        <i class="fa-solid fa-user-doctor"></i>
+                        <span>Pre-flight Environment Doctor</span>
+                    </h2>
+
+                    <!-- Info Box: Fungsi & Kapan Digunakan -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 border-4 border-black p-4 bg-brutal-lime shadow-[4px_4px_0_0_#000]">
+                        <div>
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-lightbulb"></i> Fungsi</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Melakukan diagnosa komprehensif pada konfigurasi file .env, versi PHP, koneksi database, antrean migrasi, dan tautan folder storage publik.
+                            </p>
+                        </div>
+                        <div class="border-t-2 md:border-t-0 md:border-l-2 border-black pt-4 md:pt-0 md:pl-4">
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-clock"></i> Kapan Digunakan</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Segera setelah instalasi package dan konfigurasi database selesai, serta kapan saja jika terjadi error koneksi database atau upload file tidak terbaca.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-black leading-relaxed font-medium mb-6">
+                        Sebelum mulai ujian, pastikan lingkungan development kamu sudah siap dengan perintah `forge:doctor`. Perintah ini meminimalkan potensi kegagalan di tengah jalan akibat masalah konfigurasi DB atau PHP.
+                    </p>
+                    <div class="border-4 border-black overflow-hidden shadow-[6px_6px_0_0_#000]">
+                        <div class="p-6 bg-black text-white">
+                            <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+                                <span class="font-mono text-xs md:text-sm text-emerald-400">php artisan forge:doctor</span>
+                                <button onclick="copyTextStr('php artisan forge:doctor', this)" class="text-slate-400 hover:text-white transition-colors">
+                                    <i class="fa-regular fa-copy text-xs"></i>
+                                </button>
+                            </div>
+                            <div class="font-mono text-xs md:text-sm text-left">
+                                <p class="text-brutal-yellow font-extrabold mb-4">Laravel Exam Boots — Environment Doctor</p>
+                                
+                                <div class="border-2 border-white overflow-hidden mb-4">
+                                    <table class="w-full text-left font-mono">
+                                        <thead>
+                                            <tr class="bg-white text-black border-b-2 border-white font-extrabold">
+                                                <th class="px-3 py-2">Check</th>
+                                                <th class="px-3 py-2">Status</th>
+                                                <th class="px-3 py-2">Details</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-slate-800">
+                                            <tr>
+                                                <td class="px-3 py-1.5 font-bold text-white">PHP Version</td>
+                                                <td class="px-3 py-1.5"><span class="bg-emerald-500 text-black px-1.5 py-0.5 text-[10px] font-bold">OK</span></td>
+                                                <td class="px-3 py-1.5 text-slate-300">8.3.12</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-3 py-1.5 font-bold text-white">Laravel Structure</td>
+                                                <td class="px-3 py-1.5"><span class="bg-emerald-500 text-black px-1.5 py-0.5 text-[10px] font-bold">OK</span></td>
+                                                <td class="px-3 py-1.5 text-slate-300">Laravel 11+ (modern)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-3 py-1.5 font-bold text-white">.env File</td>
+                                                <td class="px-3 py-1.5"><span class="bg-emerald-500 text-black px-1.5 py-0.5 text-[10px] font-bold">OK</span></td>
+                                                <td class="px-3 py-1.5 text-slate-300">Ditemukan</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-3 py-1.5 font-bold text-white">APP_KEY</td>
+                                                <td class="px-3 py-1.5"><span class="bg-emerald-500 text-black px-1.5 py-0.5 text-[10px] font-bold">OK</span></td>
+                                                <td class="px-3 py-1.5 text-slate-300">Sudah diset</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-3 py-1.5 font-bold text-white">APP_DEBUG</td>
+                                                <td class="px-3 py-1.5"><span class="bg-emerald-500 text-black px-1.5 py-0.5 text-[10px] font-bold">OK</span></td>
+                                                <td class="px-3 py-1.5 text-slate-300">Debug aktif</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-3 py-1.5 font-bold text-white">Database Connection</td>
+                                                <td class="px-3 py-1.5"><span class="bg-emerald-500 text-black px-1.5 py-0.5 text-[10px] font-bold">OK</span></td>
+                                                <td class="px-3 py-1.5 text-slate-300">Koneksi berhasil (mysql)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-3 py-1.5 font-bold text-white">Pending Migrations</td>
+                                                <td class="px-3 py-1.5"><span class="bg-emerald-500 text-black px-1.5 py-0.5 text-[10px] font-bold">OK</span></td>
+                                                <td class="px-3 py-1.5 text-slate-300">Semua migration up-to-date</td>
+                                            </tr>
+                                            <tr>
+    <td class="px-3 py-1.5 font-bold text-white">Backup Storage</td>
+    <td class="px-3 py-1.5"><span class="bg-emerald-500 text-black px-1.5 py-0.5 text-[10px] font-bold">OK</span></td>
+    <td class="px-3 py-1.5 text-slate-300">0 backup, bersih</td>
+</tr>
+                                            <tr>
+                                                <td class="px-3 py-1.5 font-bold text-white">Storage Link</td>
+                                                <td class="px-3 py-1.5"><span class="bg-red-500 text-black px-1.5 py-0.5 text-[10px] font-bold">FAIL</span></td>
+                                                <td class="px-3 py-1.5 text-rose-400 font-bold">Belum dilink!</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="text-rose-400 font-bold mt-2">Storage Link bermasalah. Jalankan: php artisan storage:link</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section: Step-by-Step Guides -->
+                <section id="guides" class="scroll-mt-24 bg-white border-4 border-black p-8 shadow-[8px_8px_0_0_#000]">
+                    <h2 class="text-4xl font-extrabold font-sans text-black mb-6 flex items-center space-x-3 uppercase">
+                        <i class="fa-solid fa-compass"></i>
+                        <span>Alur Langkah Pengerjaan Ujian</span>
+                    </h2>
+
+                    <!-- Info Box: Fungsi & Kapan Digunakan -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 border-4 border-black p-4 bg-brutal-orange shadow-[4px_4px_0_0_#000]">
+                        <div>
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-lightbulb"></i> Fungsi</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Panduan kronologis pengerjaan modul ujian agar project tersusun rapi, aman dari error, dan selesai tepat waktu.
+                            </p>
+                        </div>
+                        <div class="border-t-2 md:border-t-0 md:border-l-2 border-black pt-4 md:pt-0 md:pl-4">
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-clock"></i> Kapan Digunakan</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Dibaca dan dipraktikkan secara runut dari awal hingga akhir sesi ujian sertifikasi kamu.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-black leading-relaxed font-medium mb-8">
+                        Ikuti langkah taktis berikut untuk menyelesaikan pengerjaan boilerplate ujian secara instan, aman, dan 100% siap di-test:
+                    </p>
+
+                    <div class="space-y-6">
+                        <!-- Step 1 -->
+                        <div class="border-2 border-black p-6 bg-brutal-yellow shadow-[4px_4px_0_0_#000] relative">
+                            <span class="absolute -top-4 -left-4 bg-black text-white border-2 border-black px-3 py-1 font-black text-sm shadow-[2px_2px_0_0_#fff]">Langkah 1</span>
+                            <h3 class="text-lg font-black uppercase mt-2">Pre-flight Check & Inisiasi Database</h3>
+                            <p class="text-sm font-medium mt-1">Jalankan <code>php artisan forge:doctor</code> untuk memastikan PHP, konfigurasi `.env`, dan koneksi database kamu terhubung dengan benar.</p>
+                        </div>
+                        
+                        <!-- Step 2 -->
+                        <div class="border-2 border-black p-6 bg-brutal-lime shadow-[4px_4px_0_0_#000] relative">
+                            <span class="absolute -top-4 -left-4 bg-black text-white border-2 border-black px-3 py-1 font-black text-sm shadow-[2px_2px_0_0_#fff]">Langkah 2</span>
+                            <h3 class="text-lg font-black uppercase mt-2">Setup Autentikasi & Akun Awal</h3>
+                            <p class="text-sm font-medium mt-1">Setup authentication project kamu menggunakan <code>php artisan forge:auth</code> (JWT atau Sanctum). Selanjutnya, jalankan <code>php artisan forge:seed-admin</code> untuk membuat akun admin default guna mempermudah login.</p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="border-2 border-black p-6 bg-brutal-cyan shadow-[4px_4px_0_0_#000] relative">
+                            <span class="absolute -top-4 -left-4 bg-black text-white border-2 border-black px-3 py-1 font-black text-sm shadow-[2px_2px_0_0_#fff]">Langkah 3</span>
+                            <h3 class="text-lg font-black uppercase mt-2">Pembuatan Modul CRUD Relasional</h3>
+                            <p class="text-sm font-medium mt-1">Gunakan flag relasi saat membuat modul CRUD: <code>php artisan forge:add Product --belongsTo=Category --with-factory --upload=image --enum=status:active,inactive --soft-deletes</code>. Ini otomatis menyusun arsitektur relasi induk-anak, validasi upload, enum, dan soft deletes.</p>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="border-2 border-black p-6 bg-brutal-pink shadow-[4px_4px_0_0_#000] relative">
+                            <span class="absolute -top-4 -left-4 bg-black text-white border-2 border-black px-3 py-1 font-black text-sm shadow-[2px_2px_0_0_#fff]">Langkah 4</span>
+                            <h3 class="text-lg font-black uppercase mt-2">Implementasi Standardisasi API & Pengujian</h3>
+                            <p class="text-sm font-medium mt-1">Eject standardisasi Response menggunakan <code>php artisan forge:response</code>. Daftarkan Policy model via <code>forge:policy</code>. Terakhir, jalankan <code>php artisan forge:test {Model}</code> dan jalankan test-suite project kamu dengan <code>php artisan test</code>.</p>
+                        </div>
+
+                        <!-- Step 5 -->
+                        <div class="border-2 border-black p-6 bg-white shadow-[4px_4px_0_0_#000] relative">
+                            <span class="absolute -top-4 -left-4 bg-black text-white border-2 border-black px-3 py-1 font-black text-sm shadow-[2px_2px_0_0_#000]">Langkah 5</span>
+                            <h3 class="text-lg font-black uppercase mt-2">Rollback Jika Terjadi Kesalahan</h3>
+                            <p class="text-sm font-medium mt-1">Salah mengetik kolom relasi atau nama model? Tenang! Cukup ketikkan <code>php artisan forge:undo</code> untuk mengembalikan project ke kondisi pristine semula secara otomatis.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section: One-Shot Install -->
+                <section id="install-oneclick" class="scroll-mt-24 bg-white border-4 border-black p-8 shadow-[8px_8px_0_0_#000]">
+                    <h2 class="text-4xl font-extrabold font-sans text-black mb-6 flex items-center space-x-3 uppercase">
+                        <i class="fa-solid fa-rocket"></i>
+                        <span>One-Shot Install (forge:install)</span>
+                    </h2>
+
+                    <!-- Info Box: Fungsi & Kapan Digunakan -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 border-4 border-black p-4 bg-brutal-orange shadow-[4px_4px_0_0_#000]">
+                        <div>
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-lightbulb"></i> Fungsi</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Menjalankan environment check, auth setup, admin seeder, dan migrate dalam satu perintah.
+                            </p>
+                        </div>
+                        <div class="border-t-2 md:border-t-0 md:border-l-2 border-black pt-4 md:pt-0 md:pl-4">
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-clock"></i> Kapan Digunakan</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Langkah setelah composer require selesai.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-black leading-relaxed font-medium mb-6">
+                        Perintah <code>forge:install</code> menjalankan 4 langkah penting secara berurutan dalam satu perintah, sehingga kamu tidak perlu menjalankan satu per satu secara manual.
+                    </p>
+
+                    <div class="border-4 border-black overflow-hidden shadow-[6px_6px_0_0_#000] mb-8">
+                        <div class="bg-black px-6 py-3 border-b-2 border-black flex justify-between items-center text-white">
+                            <span class="text-xs font-mono font-bold">CLI Command</span>
+                        </div>
+                        <div class="p-6 font-mono text-sm bg-black text-brutal-orange flex justify-between items-center">
+                            <span>php artisan forge:install</span>
+                            <button onclick="copyTextStr('php artisan forge:install', this)" class="text-slate-400 hover:text-white transition-colors">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="border-4 border-black overflow-hidden shadow-[6px_6px_0_0_#000] mb-8">
+                        <div class="bg-black px-6 py-3 border-b-2 border-black flex justify-between items-center text-white">
+                            <span class="text-xs font-mono font-bold">CLI Command (Dry-Run)</span>
+                        </div>
+                        <div class="p-6 font-mono text-sm bg-black text-brutal-cyan flex justify-between items-center">
+                            <span>php artisan forge:install --dry-run</span>
+                            <button onclick="copyTextStr('php artisan forge:install --dry-run', this)" class="text-slate-400 hover:text-white transition-colors">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-black text-black mb-4 uppercase">Langkah yang Dijalankan</h3>
+                    <div class="bg-white border-2 border-black p-6 font-medium text-sm space-y-3 mb-6">
+                        <p><span class="font-extrabold">1. doctor</span> — Menjalankan <code>forge:doctor</code> untuk memeriksa environment PHP, database, dan konfigurasi .env.</p>
+                        <p><span class="font-extrabold">2. auth</span> — Menjalankan <code>forge:auth</code> untuk setup autentikasi (JWT atau Sanctum) beserta Scramble docs.</p>
+                        <p><span class="font-extrabold">3. seed-admin</span> — Menjalankan <code>forge:seed-admin</code> untuk membuat akun admin default.</p>
+                        <p><span class="font-extrabold">4. migrate</span> — Menjalankan <code>php artisan migrate</code> untuk menerapkan semua migration ke database.</p>
+                    </div>
+
+                    <div class="bg-brutal-bg border-2 border-black p-4">
+                        <p class="text-sm font-medium text-black"><i class="fa-solid fa-lightbulb"></i> Gunakan flag <code>--force</code> untuk melewati semua konfirmasi prompt dan langsung menjalankan seluruh langkah secara otomatis.</p>
+                    </div>
+                </section>
+
+                <!-- Section: Add CRUD -->
+                <section id="add" class="scroll-mt-24 bg-white border-4 border-black p-8 shadow-[8px_8px_0_0_#000]">
+                    <h2 class="text-4xl font-extrabold font-sans text-black mb-6 flex items-center space-x-3 uppercase">
+                        <i class="fa-solid fa-folder-plus"></i>
+                        <span>Artisan CRUD Generator</span>
+                    </h2>
+
+                    <!-- Info Box: Fungsi & Kapan Digunakan -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 border-4 border-black p-4 bg-brutal-cyan shadow-[4px_4px_0_0_#000]">
+                        <div>
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-lightbulb"></i> Fungsi</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Men-generate seluruh file CRUD utama (Model, Migration, Controller, Service, Request, Resource) dalam sekali jalan sesuai parameter input.
+                            </p>
+                        </div>
+                        <div class="border-t-2 md:border-t-0 md:border-l-2 border-black pt-4 md:pt-0 md:pl-4">
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-clock"></i> Kapan Digunakan</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Ketika soal ujian meminta kamu membuat modul/entitas database baru (contoh: modul buku, transaksi, produk, dsb.).
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-black leading-relaxed font-medium mb-6">
+                        Buat file scaffolding lengkap (Model, Migration, Controller, Service, Request, Resource) hanya dengan satu command:
+                    </p>
+
+                    <div class="border-4 border-black overflow-hidden shadow-[6px_6px_0_0_#000] mb-8">
+                        <div class="bg-black px-6 py-3 border-b-2 border-black flex justify-between items-center text-white">
+                            <span class="text-xs font-mono font-bold">Scaffolding Command</span>
+                        </div>
+                        <div class="p-6 font-mono text-sm bg-black text-brutal-cyan flex justify-between items-center">
+                            <span>php artisan forge:add Product</span>
+                            <button onclick="copyTextStr('php artisan forge:add Product', this)" class="text-slate-400 hover:text-white transition-colors">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-black text-black mb-4 uppercase">Flag Options yang Sangat Penting</h3>
+                    <div class="space-y-4 mb-8">
+                        <div class="border-2 border-black p-4 bg-brutal-yellow shadow-[4px_4px_0_0_#000] transition-transform hover:-translate-y-1">
+                            <code class="text-black text-md font-mono font-extrabold">--belongsTo=Category</code>
+                            <p class="text-black text-sm font-medium mt-1">Otomatis menyuntikkan relasi <code>belongsTo</code> di model saat ini, <code>hasMany</code> di model Parent, serta kolom Foreign Key di migration.</p>
+                        </div>
+                        <div class="border-2 border-black p-4 bg-brutal-pink shadow-[4px_4px_0_0_#000] transition-transform hover:-translate-y-1">
+                            <code class="text-black text-md font-mono font-extrabold">--hasMany=Review</code>
+                            <p class="text-black text-sm font-medium mt-1">Otomatis menyuntikkan relasi <code>hasMany</code> di model saat ini, <code>belongsTo</code> di model Review, serta kolom foreign key di migration tabel Review.</p>
+                        </div>
+                        <div class="border-2 border-black p-4 bg-white shadow-[4px_4px_0_0_#000] transition-transform hover:-translate-y-1">
+                            <code class="text-black text-md font-mono font-extrabold">--hasOne=Profile</code>
+                            <p class="text-black text-sm font-medium mt-1">Menyuntikkan relasi <code>hasOne</code> di model utama dan <code>belongsTo</code> di model Profile, cocok untuk relasi satu-ke-satu.</p>
+                        </div>
+                        <div class="border-2 border-black p-4 bg-brutal-yellow shadow-[4px_4px_0_0_#000] transition-transform hover:-translate-y-1">
+                            <code class="text-black text-md font-mono font-extrabold">--belongsToMany=Role</code>
+                            <p class="text-black text-sm font-medium mt-1">Menyuntikkan relasi <code>belongsToMany</code> di kedua model (many-to-many) beserta pembuatan tabel pivot secara otomatis di migration.</p>
+                        </div>
+                        <div class="border-2 border-black p-4 bg-brutal-lime shadow-[4px_4px_0_0_#000] transition-transform hover:-translate-y-1">
+                            <code class="text-black text-md font-mono font-extrabold">--with-factory</code>
+                            <p class="text-black text-sm font-medium mt-1">Membuat file Model Factory & Database Seeder sekaligus, terintegrasi otomatis.</p>
+                        </div>
+                        <div class="border-2 border-black p-4 bg-brutal-cyan shadow-[4px_4px_0_0_#000] transition-transform hover:-translate-y-1">
+                            <code class="text-black text-md font-mono font-extrabold">--upload=image</code>
+                            <p class="text-black text-sm font-medium mt-1">Menyisipkan handler upload file (image/pdf/etc.), validasi ukuran file, logic Storage, dan property resource URL.</p>
+                        </div>
+                        <div class="border-2 border-black p-4 bg-brutal-orange shadow-[4px_4px_0_0_#000] transition-transform hover:-translate-y-1">
+                            <code class="text-black text-md font-mono font-extrabold">--web</code>
+                            <p class="text-black text-sm font-medium mt-1">Mengaktifkan mode Web MVC: Menghasilkan 4 file Blade views (index, create, edit, show) siap pakai yang di-style dengan Tailwind CSS, Controller redirect, dan auto-register ke <code>routes/web.php</code>.</p>
+                        </div>
+                        <div class="border-2 border-black p-4 bg-brutal-purple shadow-[4px_4px_0_0_#000] transition-transform hover:-translate-y-1">
+                            <code class="text-black text-md font-mono font-extrabold">--enum=status:active,inactive</code>
+                            <p class="text-black text-sm font-medium mt-1">Membuat file Enum baru (<code>app/Enums/Status.php</code>), menambahkan casting Enum ke Model, dan menyiapkan tipe data ENUM di database migration.</p>
+                        </div>
+                        <div class="border-2 border-black p-4 bg-brutal-pink shadow-[4px_4px_0_0_#000] transition-transform hover:-translate-y-1">
+                            <code class="text-black text-md font-mono font-extrabold">--soft-deletes</code>
+                            <p class="text-black text-sm font-medium mt-1">Menyisipkan trait <code>SoftDeletes</code> ke Model dan mendefinisikan kolom <code>softDeletes()</code> pada file migration database.</p>
+                        </div>
+                        <div class="border-2 border-black p-4 bg-white shadow-[4px_4px_0_0_#000] transition-transform hover:-translate-y-1">
+                            <code class="text-black text-md font-mono font-extrabold">--dry-run / --force</code>
+                            <p class="text-black text-sm font-medium mt-1"><code>--dry-run</code> digunakan untuk preview operasi file sebelum dieksekusi. <code>--force</code> digunakan untuk menimpa file yang sudah ada tanpa konfirmasi prompt.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-black text-black mb-4 uppercase">Detail Logic & Hasil Generator</h3>
+                    <div class="bg-black text-white p-6 font-mono text-xs overflow-x-auto border-4 border-black shadow-[4px_4px_0_0_#000]">
+                        <p class="text-slate-500">// File Controller yang di-generate sudah mendukung filter, sorting, pagination, dan search:</p>
+                        <p class="text-brutal-cyan">public function index(Request $request): JsonResponse</p>
+                        <p>{</p>
+                        <p class="pl-4">// Memanggil Service layer secara clean</p>
+                        <p class="pl-4">$products = $this->productService->getAllProduct($request->all());</p>
+                        <p class="pl-4">return response()->json([</p>
+                        <p class="pl-8">'status' => 'success',</p>
+                        <p class="pl-8">'data' => ProductResource::collection($products),</p>
+                        <p class="pl-8">'meta' => [ ... ]</p>
+                        <p class="pl-4">]);</p>
+                        <p>}</p>
+                    </div>
+                </section>
+
+                <!-- Section: Auth -->
+                <section id="auth" class="scroll-mt-24 bg-white border-4 border-black p-8 shadow-[8px_8px_0_0_#000]">
+                    <h2 class="text-4xl font-extrabold font-sans text-black mb-6 flex items-center space-x-3 uppercase">
+                        <i class="fa-solid fa-lock"></i>
+                        <span>Setup Authentication</span>
+                    </h2>
+
+                    <!-- Info Box: Fungsi & Kapan Digunakan -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 border-4 border-black p-4 bg-brutal-pink shadow-[4px_4px_0_0_#000]">
+                        <div>
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-lightbulb"></i> Fungsi</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Memasang endpoint register, login, profile me, logout, beserta middleware token security (JWT / Sanctum).
+                            </p>
+                        </div>
+                        <div class="border-t-2 md:border-t-0 md:border-l-2 border-black pt-4 md:pt-0 md:pl-4">
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-clock"></i> Kapan Digunakan</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Di awal ujian jika soal meminta sistem login API atau web view yang mewajibkan proteksi data sensitif.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-black leading-relaxed font-medium mb-6">
+                        Buat sistem login, register, profile info (me), dan logout secara instan. Fitur ini akan otomatis menghasilkan endpoint autentikasi modern di dalam folder Controller.
+                    </p>
+                    <div class="bg-brutal-bg border-4 border-black p-6 shadow-[4px_4px_0_0_#000] mb-8">
+                        <span class="text-xs bg-black text-white px-2 py-1 font-bold uppercase">Langkah Setup</span>
+                        <ol class="list-decimal list-inside space-y-3 text-black font-medium mt-4">
+                            <li>Jalankan: <code class="bg-white border border-black px-1.5 font-mono font-bold">php artisan forge:auth</code></li>
+                            <li>Pilih driver: <strong class="font-extrabold">JWT</strong> (tymon/jwt-auth) atau <strong class="font-extrabold">Sanctum</strong> (laravel/sanctum).</li>
+                            <li>Ketik <strong class="font-extrabold">Yes/Ya</strong> jika ingin sekaligus di-instalkan <strong class="font-extrabold">API docs Scramble</strong> secara otomatis.</li>
+                        </ol>
+                        <p class="text-sm font-medium mt-2 bg-brutal-bg border-2 border-black p-3"><i class="fa-solid fa-lightbulb"></i> <span class="font-extrabold">Auto Guard Config</span>: Middleware generator (<code>forge:add</code>) otomatis membaca metode auth dari <code>config('exam-boots.defaults.auth_method')</code>. Sanctum → <code>auth:sanctum</code>, JWT → <code>auth:api</code>.</p>
+                    </div>
+
+                    <h3 class="text-2xl font-black text-black mb-4 uppercase">File yang Dihasilkan</h3>
+                    <div class="space-y-4">
+                        <div class="border-2 border-black p-4 bg-white shadow-[2px_2px_0_0_#000]">
+                            <h4 class="font-extrabold text-sm text-black">1. AuthController</h4>
+                            <p class="text-xs font-mono text-slate-500 mt-1">API: app/Http/Controllers/Api/DocsAuthController.php</p>
+                            <p class="text-xs font-mono text-slate-500">Web: app/Http/Controllers/DocsAuthController.php</p>
+                            <p class="text-sm text-black mt-2 font-medium">Berisi method <code>register()</code>, <code>login()</code>, <code>me()</code>, dan <code>logout()</code>.</p>
+                        </div>
+                        <div class="border-2 border-black p-4 bg-white shadow-[2px_2px_0_0_#000]">
+                            <h4 class="font-extrabold text-sm text-black">2. Route Registration</h4>
+                            <p class="text-xs font-mono text-slate-500 mt-1">API: routes/api.php</p>
+                            <p class="text-xs font-mono text-slate-500">Web: routes/web.php</p>
+                            <p class="text-sm text-black mt-2 font-medium">Didaftarkan otomatis dengan grup route dan middleware protection yang sesuai (<code>auth:sanctum</code> atau <code>auth:api</code>).</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section: Scramble Docs -->
+                <section id="scramble" class="scroll-mt-24 bg-white border-4 border-black p-8 shadow-[8px_8px_0_0_#000]">
+                    <h2 class="text-4xl font-extrabold font-sans text-black mb-6 flex items-center space-x-3 uppercase">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>Scramble API Docs</span>
+                    </h2>
+
+                    <!-- Info Box: Fungsi & Kapan Digunakan -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 border-4 border-black p-4 bg-brutal-purple shadow-[4px_4px_0_0_#000]">
+                        <div>
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-lightbulb"></i> Fungsi</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Men-generate dokumentasi API interaktif berbasis OpenAPI/Swagger secara otomatis tanpa menulis anotasi manual di controller.
+                            </p>
+                        </div>
+                        <div class="border-t-2 md:border-t-0 md:border-l-2 border-black pt-4 md:pt-0 md:pl-4">
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-clock"></i> Kapan Digunakan</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Ketika kamu ingin menguji endpoint API, atau saat penguji/asesor meminta bukti link dokumentasi API sistem kamu.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-black leading-relaxed font-medium mb-6">
+                        Scramble mendokumentasikan API Laravel secara dinamis tanpa anotasi PHPDoc yang rumit. Jika diaktifkan saat setup auth, program akan meng-configure Service Provider agar mendeteksi metode autentikasi secara otomatis.
+                    </p>
+                    
+                    <div class="bg-brutal-bg border-4 border-black p-6 shadow-[4px_4px_0_0_#000] mb-8">
+                        <h3 class="text-lg font-black text-black mb-2 uppercase">Cara Mengakses</h3>
+                        <p class="text-black text-sm font-medium leading-relaxed">
+                            Nyalakan server lokal kamu dengan perintah:
+                            <code class="bg-white border border-black px-1.5 font-mono font-bold block my-2 w-max text-xs">php artisan serve</code>
+                            Buka browser ke alamat berikut untuk melihat OpenAPI Docs interaktif:
+                            <code class="bg-white border border-black px-1.5 font-mono font-bold block my-2 w-max text-xs text-red-500 select-all">http://localhost:8000/docs/api</code>
+                        </p>
+                    </div>
+
+                    <h3 class="text-2xl font-black text-black mb-4 uppercase">Kustomisasi Service Provider</h3>
+                    <p class="text-black text-sm font-medium mb-4">
+                        File config scrambler terletak di <code>app/Providers/ScrambleServiceProvider.php</code>. Kamu bisa mengubah deskripsi API, judul dokumen, atau membatasi akses dokumentasi hanya di environment local.
+                    </p>
+                </section>
+
+                <!-- Section: Relation -->
+                <section id="relation" class="scroll-mt-24 bg-white border-4 border-black p-8 shadow-[8px_8px_0_0_#000]">
+                    <h2 class="text-4xl font-extrabold font-sans text-black mb-6 flex items-center space-x-3 uppercase">
+                        <i class="fa-solid fa-link"></i>
+                        <span>Relasi Interaktif</span>
+                    </h2>
+
+                    <!-- Info Box: Fungsi & Kapan Digunakan -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 border-4 border-black p-4 bg-brutal-cyan shadow-[4px_4px_0_0_#000]">
+                        <div>
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-lightbulb"></i> Fungsi</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Menyambungkan dua model Eloquent yang sudah ada secara interaktif, menyuntikkan method relasi, foreign key, dan migrasi tabel pivot.
+                            </p>
+                        </div>
+                        <div class="border-t-2 md:border-t-0 md:border-l-2 border-black pt-4 md:pt-0 md:pl-4">
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-clock"></i> Kapan Digunakan</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Ketika kamu memiliki model yang sudah dibuat dan perlu menghubungkannya lewat relasi 1:1, 1:N, atau N:M di tengah jalannya ujian.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-black leading-relaxed font-medium mb-6">
+                        Gunakan `forge:relation` untuk menghubungkan dua model yang sudah ada dengan panduan interaktif terminal. Mendukung relasi <span class="font-extrabold">One to One</span>, <span class="font-extrabold">One to Many</span>, dan <span class="font-extrabold">Many to Many</span>.
+                    </p>
+                    <div class="border-4 border-black overflow-hidden shadow-[6px_6px_0_0_#000] mb-8">
+                        <div class="bg-black px-6 py-3 border-b-2 border-black flex justify-between items-center text-white">
+                            <span class="text-xs font-mono font-bold">CLI Command</span>
+                        </div>
+                        <div class="p-6 font-mono text-sm bg-black text-brutal-lime flex justify-between items-center">
+                            <span>php artisan forge:relation</span>
+                            <button onclick="copyTextStr('php artisan forge:relation', this)" class="text-slate-400 hover:text-white transition-colors">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-black text-black mb-4 uppercase">Langkah Menggunakan</h3>
+                    <div class="bg-white border-2 border-black p-6 font-medium text-sm space-y-4 mb-8">
+                        <p class="font-extrabold">1. Tentukan Model Utama (Parent) & Anak (Child):</p>
+                        <p class="text-slate-600">CLI akan memindai folder <code>app/Models</code> dan meminta kamu memilih model induk (misal: <code>User</code>) dan model anak (misal: <code>Post</code>).</p>
+                        
+                        <p class="font-extrabold">2. Pilih Tipe Relasi:</p>
+                        <ul class="list-disc list-inside space-y-1 text-slate-600">
+                            <li><strong>One to Many (1:N)</strong>: Menambahkan hasMany ke Parent, belongsTo ke Child, dan FK column ke migration.</li>
+                            <li><strong>One to One (1:1)</strong>: Menambahkan hasOne ke Parent, belongsTo ke Child.</li>
+                            <li><strong>Many to Many (N:M)</strong>: Menambahkan belongsToMany ke kedua model, sekaligus men-generate file migration table pivot (contoh: <code>post_user</code>).</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section: Response -->
+                <section id="response" class="scroll-mt-24 bg-white border-4 border-black p-8 shadow-[8px_8px_0_0_#000]">
+                    <h2 class="text-4xl font-extrabold font-sans text-black mb-6 flex items-center space-x-3 uppercase">
+                        <i class="fa-solid fa-reply"></i>
+                        <span>ApiResponse Trait</span>
+                    </h2>
+
+                    <!-- Info Box: Fungsi & Kapan Digunakan -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 border-4 border-black p-4 bg-brutal-yellow shadow-[4px_4px_0_0_#000]">
+                        <div>
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-lightbulb"></i> Fungsi</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Menyediakan standarisasi format respon JSON agar response sukses dan error (validasi, server error) seragam.
+                            </p>
+                        </div>
+                        <div class="border-t-2 md:border-t-0 md:border-l-2 border-black pt-4 md:pt-0 md:pl-4">
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-clock"></i> Kapan Digunakan</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Saat kamu mulai mengode controller API agar output response JSON rapi dan sesuai standar penilaian penguji.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-black leading-relaxed font-medium mb-6">
+                        Standardisasi format JSON API dengan ejecting trait `ApiResponse.php` ke folder `app/Traits/`.
+                    </p>
+                    <div class="border-4 border-black overflow-hidden shadow-[6px_6px_0_0_#000] mb-6">
+                        <div class="bg-black px-6 py-3 border-b-2 border-black flex justify-between items-center text-white">
+                            <span class="text-xs font-mono font-bold">CLI Command</span>
+                        </div>
+                        <div class="p-6 font-mono text-sm bg-black text-brutal-yellow flex justify-between items-center">
+                            <span>php artisan forge:response</span>
+                            <button onclick="copyTextStr('php artisan forge:response', this)" class="text-slate-400 hover:text-white transition-colors">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-black text-black mb-4 uppercase">Contoh Kode Kontroler</h3>
+                    <div class="border-4 border-black overflow-hidden shadow-[6px_6px_0_0_#000]">
+                        <div class="bg-black px-6 py-3 border-b-2 border-black flex justify-between items-center text-white">
+                            <span class="text-xs font-mono text-slate-500">app/Traits/ApiResponse.php</span>
+                        </div>
+                        <div class="p-6 font-mono text-sm leading-relaxed text-white bg-black">
+                            <p class="text-slate-500">// Di Controller kamu:</p>
+                            <p class="text-brutal-cyan">use App\Traits\ApiResponse;</p>
+                            <br>
+                            <p>class ProductController extends Controller</p>
+                            <p>{</p>
+                            <p class="pl-4">use ApiResponse;</p>
+                            <br>
+                            <p class="pl-4">public function index()</p>
+                            <p class="pl-4">{</p>
+                            <p class="pl-8">return <span class="text-brutal-lime">$this->successResponse</span>($products, "Data berhasil diload");</p>
+                            <p class="pl-4">}</p>
+                            <p>}</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section: Policy -->
+                <section id="policy" class="scroll-mt-24 bg-white border-4 border-black p-8 shadow-[8px_8px_0_0_#000]">
+                    <h2 class="text-4xl font-extrabold font-sans text-black mb-6 flex items-center space-x-3 uppercase">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>Policy/Authorization</span>
+                    </h2>
+
+                    <!-- Info Box: Fungsi & Kapan Digunakan -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 border-4 border-black p-4 bg-brutal-lime shadow-[4px_4px_0_0_#000]">
+                        <div>
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-lightbulb"></i> Fungsi</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Membatasi hak akses CRUD model (seperti view, update, delete) berdasarkan ID kepemilikan data user login.
+                            </p>
+                        </div>
+                        <div class="border-t-2 md:border-t-0 md:border-l-2 border-black pt-4 md:pt-0 md:pl-4">
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-clock"></i> Kapan Digunakan</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Ketika soal ujian meminta agar data transaksi/produk hanya boleh diedit/dihapus oleh user yang membuatnya.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-black leading-relaxed font-medium mb-6">
+                        Gunakan `forge:policy {Model}` untuk membuat authorization Policy dan auto-register ke dalam array `$policies` di `AuthServiceProvider.php`.
+                    </p>
+                    <div class="border-4 border-black overflow-hidden shadow-[6px_6px_0_0_#000] mb-8">
+                        <div class="bg-black px-6 py-3 border-b-2 border-black flex justify-between items-center text-white">
+                            <span class="text-xs font-mono font-bold">CLI Command</span>
+                        </div>
+                        <div class="p-6 font-mono text-sm bg-black text-brutal-lime flex justify-between items-center">
+                            <span>php artisan forge:policy Product</span>
+                            <button onclick="copyTextStr('php artisan forge:policy Product', this)" class="text-slate-400 hover:text-white transition-colors">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-black text-black mb-4 uppercase">Bagaimana Cara Kerjanya?</h3>
+                    <div class="bg-white border-2 border-black p-6 font-medium text-sm space-y-4">
+                        <p>1. <span class="font-extrabold">Pembuatan File</span>: Package men-generate class policy di folder <code>app/Policies/ProductPolicy.php</code> lengkap dengan method standard (<code>viewAny</code>, <code>view</code>, <code>create</code>, <code>update</code>, <code>delete</code>, dsb.).</p>
+                        <p>2. <span class="font-extrabold">Auto-Registrasi</span>: Jika file <code>app/Providers/AuthServiceProvider.php</code> ada di project kamu, package akan mendeteksi baris <code>protected $policies = [</code> dan mendaftarkan pemetaan policy secara otomatis.</p>
+                        <p>3. <span class="font-extrabold">Penerapan Authorization</span>: Kamu bisa menerapkan policy ini di controller kamu:</p>
+                        <code class="bg-black text-white p-3 font-mono text-xs block">$this->authorize('update', $product);</code>
+                    </div>
+                </section>
+
+                <!-- Section: Test -->
+                <section id="test" class="scroll-mt-24 bg-white border-4 border-black p-8 shadow-[8px_8px_0_0_#000]">
+                    <h2 class="text-4xl font-extrabold font-sans text-black mb-6 flex items-center space-x-3 uppercase">
+                        <i class="fa-solid fa-vial"></i>
+                        <span>Feature Test Skeleton</span>
+                    </h2>
+
+                    <!-- Info Box: Fungsi & Kapan Digunakan -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 border-4 border-black p-4 bg-brutal-pink shadow-[4px_4px_0_0_#000]">
+                        <div>
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-lightbulb"></i> Fungsi</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Membuat automated integration tests (PHPUnit/Pest) untuk menguji seluruh rute API CRUD beserta pengujian unauthorized access.
+                            </p>
+                        </div>
+                        <div class="border-t-2 md:border-t-0 md:border-l-2 border-black pt-4 md:pt-0 md:pl-4">
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-clock"></i> Kapan Digunakan</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Setelah kamu menyelesaikan coding CRUD, untuk menjamin program tidak error dan semua rest API aman saat dinilai penguji.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-black leading-relaxed font-medium mb-6">
+                        Buat pengujian otomatis untuk modul CRUD dan endpoint protection. CLI mendukung framework testing bawaan PHPUnit atau Pest PHP.
+                    </p>
+                    <div class="border-4 border-black overflow-hidden shadow-[6px_6px_0_0_#000] mb-8">
+                        <div class="bg-black px-6 py-3 border-b-2 border-black flex justify-between items-center text-white">
+                            <span class="text-xs font-mono font-bold">Generate Command</span>
+                        </div>
+                        <div class="p-6 font-mono text-sm bg-black text-white space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span>php artisan forge:test Product <span class="text-slate-500"># PHPUnit</span></span>
+                                <button onclick="copyTextStr('php artisan forge:test Product', this)" class="text-slate-400 hover:text-white transition-colors">
+                                    <i class="fa-regular fa-copy"></i>
+                                </button>
+                            </div>
+                            <div class="flex justify-between items-center border-t border-slate-800 pt-4">
+                                <span>php artisan forge:test Product --pest <span class="text-slate-500"># Pest PHP</span></span>
+                                <button onclick="copyTextStr('php artisan forge:test Product --pest', this)" class="text-slate-400 hover:text-white transition-colors">
+                                    <i class="fa-regular fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-black text-black mb-4 uppercase">Cakupan Uji CRUD & Auth</h3>
+                    <div class="bg-white border-2 border-black p-6 font-medium text-sm space-y-2 mb-8">
+                        <p><i class="fa-solid fa-check text-emerald-600"></i> <span class="font-extrabold">Read</span>: Menguji akses user terautentikasi terhadap endpoint list index.</p>
+                        <p><i class="fa-solid fa-check text-emerald-600"></i> <span class="font-extrabold">Create</span>: Menguji pengiriman payload data untuk menyimpan record baru.</p>
+                        <p><i class="fa-solid fa-check text-emerald-600"></i> <span class="font-extrabold">Detail</span>: Menguji request pencarian detail data berdasarkan ID.</p>
+                        <p><i class="fa-solid fa-check text-emerald-600"></i> <span class="font-extrabold">Update</span>: Menguji pengeditan data yang sudah tersimpan di DB.</p>
+                        <p><i class="fa-solid fa-check text-emerald-600"></i> <span class="font-extrabold">Delete</span>: Menguji penghapusan data dan asersi data hilang dari database.</p>
+                        <p><i class="fa-solid fa-check text-emerald-600"></i> <span class="font-extrabold">Auth Protection</span>: Memastikan user tanpa token diblokir secara aman dengan status HTTP `401 Unauthorized`.</p>
+                    </div>
+                </section>
+
+                <!-- Section: Export -->
+                <section id="export" class="scroll-mt-24 bg-white border-4 border-black p-8 shadow-[8px_8px_0_0_#000]">
+                    <h2 class="text-4xl font-extrabold font-sans text-black mb-6 flex items-center space-x-3 uppercase">
+                        <i class="fa-solid fa-file-export"></i>
+                        <span>Ekspor Data (Excel/PDF)</span>
+                    </h2>
+
+                    <!-- Info Box: Fungsi & Kapan Digunakan -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 border-4 border-black p-4 bg-brutal-cyan shadow-[4px_4px_0_0_#000]">
+                        <div>
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-lightbulb"></i> Fungsi</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Menghasilkan file kelas Export (Maatwebsite Excel) dan Export PDF dengan Blade Template untuk mencetak data database.
+                            </p>
+                        </div>
+                        <div class="border-t-2 md:border-t-0 md:border-l-2 border-black pt-4 md:pt-0 md:pl-4">
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-clock"></i> Kapan Digunakan</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Digunakan saat instruksi soal ujian secara spesifik meminta adanya fitur "Cetak PDF" atau "Ekspor ke Excel/CSV".
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-black leading-relaxed font-medium mb-6">
+                        Generate boilerplate logic untuk mengekspor data ke file Excel atau PDF lengkap dengan blade layout styling.
+                    </p>
+                    <div class="border-4 border-black overflow-hidden shadow-[6px_6px_0_0_#000] mb-8">
+                        <div class="bg-black px-6 py-3 border-b-2 border-black flex justify-between items-center text-white">
+                            <span class="text-xs font-mono font-bold">CLI Command</span>
+                        </div>
+                        <div class="p-6 font-mono text-sm bg-black text-brutal-cyan flex justify-between items-center">
+                            <span>php artisan forge:export Product</span>
+                            <button onclick="copyTextStr('php artisan forge:export Product', this)" class="text-slate-400 hover:text-white transition-colors">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-black text-black mb-4 uppercase">Langkah Tambahan</h3>
+                    <div class="bg-white border-2 border-black p-6 font-medium text-sm space-y-4">
+                        <p>1. <span class="font-extrabold">Install Package Pendukung</span>:</p>
+                        <ul class="list-disc list-inside text-slate-600 pl-4 space-y-1">
+                            <li>Untuk Excel/CSV: <code>composer require maatwebsite/excel</code></li>
+                            <li>Untuk PDF: <code>composer require barryvdh/laravel-dompdf</code></li>
+                        </ul>
+                        <p>2. <span class="font-extrabold">Penerapan Route</span>:</p>
+                        <code class="bg-black text-white p-3 font-mono text-xs block">Route::get('products/export-excel', fn() => Excel::download(new ProductExport, 'products.xlsx'));</code>
+                    </div>
+                </section>
+
+                <!-- Section: Undo -->
+                <section id="undo" class="scroll-mt-24 bg-white border-4 border-black p-8 shadow-[8px_8px_0_0_#000]">
+                    <h2 class="text-4xl font-extrabold font-sans text-black mb-6 flex items-center space-x-3 uppercase">
+                        <i class="fa-solid fa-rotate-left"></i>
+                        <span>Rollback & Revert (forge:undo)</span>
+                    </h2>
+
+                    <!-- Info Box: Fungsi & Kapan Digunakan -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 border-4 border-black p-4 bg-brutal-orange shadow-[4px_4px_0_0_#000]">
+                        <div>
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-lightbulb"></i> Fungsi</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Mengembalikan (rollback) seluruh file yang digenerate oleh command terakhir ke kondisi semula menggunakan backup history lokal.
+                            </p>
+                        </div>
+                        <div class="border-t-2 md:border-t-0 md:border-l-2 border-black pt-4 md:pt-0 md:pl-4">
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-clock"></i> Kapan Digunakan</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Saat terjadi kesalahan input flag, salah nama tabel/model, atau terjadi error fatal akibat injection code yang ingin dibatalkan.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-black leading-relaxed font-medium mb-6">
+                        Salah ketik nama model atau relasi? Gunakan `forge:undo` untuk mengembalikan file yang dimodifikasi ke versi backup aslinya dan menghapus file yang baru digenerate secara aman.
+                    </p>
+                    <div class="border-4 border-black overflow-hidden shadow-[6px_6px_0_0_#000] mb-8">
+                        <div class="bg-black px-6 py-3 border-b-2 border-black flex justify-between items-center text-white">
+                            <span class="text-xs font-mono font-bold">CLI Command</span>
+                        </div>
+                        <div class="p-6 font-mono text-sm bg-black text-brutal-orange flex justify-between items-center">
+                            <span>php artisan forge:undo</span>
+                            <button onclick="copyTextStr('php artisan forge:undo', this)" class="text-slate-400 hover:text-white transition-colors">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-black text-black mb-4 uppercase">Keamanan Tambahan</h3>
+                    <p class="text-black text-sm font-medium leading-relaxed">
+                        Tiap kali perintah generator berjalan (seperti <code>forge:add</code>, <code>forge:auth</code>, dll.), package akan menyalin versi asli file target ke folder backup <code>storage/exam-boots/backups/</code> dan menulis riwayat di <code>history.json</code>. Begitu perintah undo dijalankan, semua backup akan di-restore ke kondisi awal secara presisi.
+                    </p>
+
+                    <h3 class="text-2xl font-black text-black mt-6 mb-4 uppercase">Prune Backup Tua</h3>
+                    <p class="text-black text-sm font-medium leading-relaxed mb-4">
+                        Backup yang menumpuk bisa dihapus otomatis dengan flag <code>--prune</code>. Perintah ini akan membersihkan folder backup yang sudah melewati batas retensi (default 3 hari) sesuai konfigurasi <code>exam-boots.backup.retention_days</code>.
+                    </p>
+                    <div class="border-4 border-black overflow-hidden shadow-[6px_6px_0_0_#000]">
+                        <div class="bg-black px-6 py-3 border-b-2 border-black flex justify-between items-center text-white">
+                            <span class="text-xs font-mono font-bold">CLI Command</span>
+                        </div>
+                        <div class="p-6 font-mono text-sm bg-black text-brutal-orange flex justify-between items-center">
+                            <span>php artisan forge:undo --prune</span>
+                            <button onclick="copyTextStr('php artisan forge:undo --prune', this)" class="text-slate-400 hover:text-white transition-colors">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section: Admin Seeder -->
+                <section id="seed-admin" class="scroll-mt-24 bg-white border-4 border-black p-8 shadow-[8px_8px_0_0_#000]">
+                    <h2 class="text-4xl font-extrabold font-sans text-black mb-6 flex items-center space-x-3 uppercase">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span>Admin User Seeder</span>
+                    </h2>
+
+                    <!-- Info Box: Fungsi & Kapan Digunakan -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 border-4 border-black p-4 bg-brutal-lime shadow-[4px_4px_0_0_#000]">
+                        <div>
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-lightbulb"></i> Fungsi</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Men-generate class AdminUserSeeder berisi default login user (email & password) dan mendaftarkannya ke DatabaseSeeder.
+                            </p>
+                        </div>
+                        <div class="border-t-2 md:border-t-0 md:border-l-2 border-black pt-4 md:pt-0 md:pl-4">
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-clock"></i> Kapan Digunakan</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Segera setelah melakukan setup auth agar kamu punya akun admin yang valid untuk mencoba endpoint login sistem tanpa register manual.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-black leading-relaxed font-medium mb-6">
+                        Buat data dummy admin default secara instan untuk mempercepat proses testing login API/Web. Command ini men-generate class seeder dan mendaftarkannya langsung ke kelas `DatabaseSeeder.php`.
+                    </p>
+                    <div class="border-4 border-black overflow-hidden shadow-[6px_6px_0_0_#000] mb-8">
+                        <div class="bg-black px-6 py-3 border-b-2 border-black flex justify-between items-center text-white">
+                            <span class="text-xs font-mono font-bold">CLI Command</span>
+                        </div>
+                        <div class="p-6 font-mono text-sm bg-black text-brutal-lime flex justify-between items-center">
+                            <span>php artisan forge:seed-admin --email=admin@example.com --password=password</span>
+                            <button onclick="copyTextStr('php artisan forge:seed-admin', this)" class="text-slate-400 hover:text-white transition-colors">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-black text-black mb-4 uppercase">Detail Default User</h3>
+                    <div class="bg-white border-2 border-black p-6 font-medium text-sm space-y-2">
+                        <p><i class="fa-solid fa-user"></i> <span class="font-extrabold">Role</span>: Admin / Default user</p>
+                        <p><i class="fa-solid fa-envelope"></i> <span class="font-extrabold">Email</span>: <code>admin@example.com</code> (atau email yang kamu spesifikasi via flag)</p>
+                        <p><i class="fa-solid fa-key"></i> <span class="font-extrabold">Password</span>: <code>password</code> (atau password yang kamu spesifikasi via flag)</p>
+                    </div>
+                </section>
+
+                <!-- Section: Cheatsheet -->
+                <section id="cheatsheet" class="scroll-mt-24 bg-white border-4 border-black p-8 shadow-[8px_8px_0_0_#000]">
+                    <h2 class="text-4xl font-extrabold font-sans text-black mb-6 flex items-center space-x-3 uppercase">
+                        <i class="fa-solid fa-clipboard-list"></i>
+                        <span>Cheatsheet Offline</span>
+                    </h2>
+
+                    <!-- Info Box: Fungsi & Kapan Digunakan -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 border-4 border-black p-4 bg-brutal-yellow shadow-[4px_4px_0_0_#000]">
+                        <div>
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-lightbulb"></i> Fungsi</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Menampilkan tabel panduan cepat penggunaan command Artisan beserta deskripsi opsi-opsinya langsung di CLI terminal.
+                            </p>
+                        </div>
+                        <div class="border-t-2 md:border-t-0 md:border-l-2 border-black pt-4 md:pt-0 md:pl-4">
+                            <span class="font-extrabold uppercase text-xs bg-black text-white px-2 py-0.5"><i class="fa-solid fa-clock"></i> Kapan Digunakan</span>
+                            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+                                Kapan saja saat kamu lupa parameter, flag option, atau format penulisan command di tengah berjalannya ujian tanpa internet.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-black leading-relaxed font-medium mb-6">
+                        Butuh referensi cepat di tengah ujian tanpa internet? Panggil cheatsheet langsung di terminal kamu.
+                    </p>
+                    <div class="border-4 border-black overflow-hidden shadow-[8px_8px_0_0_#000]">
+                        <div class="bg-black px-6 py-3 border-b-2 border-black flex justify-between items-center text-white">
+                            <span class="text-xs font-mono font-bold">Terminal Output</span>
+                        </div>
+                        <div class="p-6 font-mono text-xs leading-relaxed text-slate-300 bg-black">
+                            <p class="text-brutal-yellow">php artisan forge:cheatsheet</p>
+                            <br>
+                            <p class="text-brutal-cyan font-bold">Laravel Exam Boots — Quick Reference Cheatsheet</p>
+                            <p class="text-slate-500">══════════════════════════════════════════════════════════════════════════════</p>
+                            <p class="text-brutal-cyan font-bold"># GENERATE BOILERPLATE</p>
+                            <p>  php artisan forge:add Product                    # CRUD Boilerplate</p>
+                            <p>  php artisan forge:add Product --with-factory     # + Factory & Seeder</p>
+                            <p>  php artisan forge:add Product --belongsTo=User   # + Auto-relasi</p>
+                            <p>  php artisan forge:add Product --upload=image     # + File upload handler</p>
+                            <p>  php artisan forge:add Product --enum=status:active,inactive # + Enum Class</p>
+                            <p>  php artisan forge:add Product --soft-deletes     # + SoftDeletes</p>
+                            <p>  php artisan forge:add Product --hasMany=Review  # + hasMany relasi</p>
+                            <p>  php artisan forge:add Product --hasOne=Profile   # + hasOne relasi</p>
+                            <p>  php artisan forge:add Product --belongsToMany=Role # + many-to-many pivot</p>
+                            <p class="text-brutal-cyan font-bold"># RELATIONSHIP</p>
+                            <p>  php artisan forge:relation                       # Interactive relation (1:1, 1:N, N:M)</p>
+                            <p class="text-brutal-cyan font-bold"># AUTHENTICATION</p>
+                            <p>  php artisan forge:auth                           # Setup JWT / Sanctum + controllers</p>
+                            <p class="text-brutal-cyan font-bold"># ONE-SHOT INSTALL</p>
+                            <p>  php artisan forge:install                        # Setup lengkap (doctor + auth + seed + migrate)</p>
+                            <p>  php artisan forge:install --dry-run              # Preview tanpa eksekusi</p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white border-t-4 border-black py-12 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-slate-400 text-sm">&copy; 2026 Laravel Exam Boots. Dibuat untuk mempermudah pengerjaan ujian sertifikasi.</p>
+            <p class="text-brutal-yellow text-md font-black mt-2 uppercase tracking-wider">Boots Up, Code Fast, Pass the Exam!</p>
+        </div>
+    </footer>
+
+    <!-- Search Engine & Copy script -->
+    <script>
+        // Live Search Engine with relevance ranking
+        function performSearch(query) {
+            query = query.toLowerCase().trim();
+            const sections = document.querySelectorAll('#contentContainer > section');
+            const noResults = document.getElementById('noResults');
+            let anyVisible = false;
+
+            // Relevance map: section -> score
+            const scored = [];
+
+            sections.forEach(section => {
+                const id = section.id.toLowerCase();
+                const title = section.querySelector('h2').innerText.toLowerCase();
+                const content = section.innerText.toLowerCase();
+
+                let score = 0;
+
+                // Exact title match = highest priority
+                if (title === query) score += 100;
+                // Title starts with query
+                else if (title.startsWith(query)) score += 80;
+                // Title includes query
+                else if (title.includes(query)) score += 60;
+
+                // ID match
+                if (id === query) score += 50;
+                else if (id.includes(query)) score += 40;
+                // ID partial: "auth" matches "autentikasi" via related keywords
+                else if (query.includes(id) || id.includes(query)) score += 30;
+
+                // Content match
+                if (content.includes(query)) score += 20;
+
+                // Bonus: Indonesian keywords mapped to section IDs
+                const keywords = {
+                    'auth': ['autentikasi', 'login', 'register', 'logout', 'jwt', 'sanctum', 'token', 'password', 'guard'],
+                    'add': ['crud', 'generate', 'model', 'migration', 'controller', 'service'],
+                    'install': ['setup', 'one-shot', 'pasang'],
+                    'install-oneclick': ['one-shot', 'instalasi cepat', 'all in one'],
+                    'doctor': ['cek', 'check', 'diagnosa', 'environment', 'lingkungan'],
+                    'guides': ['langkah', 'panduan', 'alur', 'tutorial', 'step'],
+                    'response': ['api response', 'trait', 'json', 'format response'],
+                    'policy': ['authorization', 'otorisasi', 'hak akses', 'permission'],
+                    'relation': ['relasi', 'hasmany', 'belongsto', 'hasone'],
+                    'test': ['pengujian', 'testing', 'phpunit', 'pest'],
+                    'export': ['ekspor', 'excel', 'pdf', 'print'],
+                    'undo': ['rollback', 'kembalikan', 'revert', 'batal', 'prune'],
+                    'seed-admin': ['seeder', 'admin user', 'user default', 'dummy'],
+                    'cheatsheet': ['referensi', 'ringkasan', 'command list', 'cepat'],
+                    'scramble': ['api docs', 'dokumentasi', 'swagger', 'openapi'],
+                };
+
+                for (const [sid, terms] of Object.entries(keywords)) {
+                    if (sid === id && terms.some(t => query.includes(t) || t.includes(query))) {
+                        score += 35;
+                    }
+                }
+
+                scored.push({ el: section, score, id, title });
+            });
+
+            // Sort by score descending
+            scored.sort((a, b) => b.score - a.score);
+
+            // Hide all first
+            sections.forEach(s => s.style.display = 'none');
+
+            // Show matching (score > 0)
+            scored.forEach(item => {
+                if (item.score > 0) {
+                    item.el.style.display = 'block';
+                    anyVisible = true;
+                }
+            });
+
+            if (query === '') {
+                // Show all when query is empty
+                sections.forEach(s => s.style.display = 'block');
+                noResults.classList.add('hidden');
+            } else if (!anyVisible) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        }
+
+        // Bind both search inputs with two-way sync
+        function syncSearch(value) {
+            performSearch(value);
+            document.getElementById('docSearch').value = value;
+            document.getElementById('headerSearch').value = value;
+        }
+
+        document.getElementById('docSearch').addEventListener('input', function(e) {
+            syncSearch(e.target.value);
+        });
+        document.getElementById('headerSearch').addEventListener('input', function(e) {
+            syncSearch(e.target.value);
+        });
+
+        // Copy Text Helpers
+        function copyText(id, btn) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const icon = btn.querySelector('i');
+                icon.className = 'fa-solid fa-check text-brutal-lime';
+                setTimeout(() => {
+                    icon.className = 'fa-regular fa-copy';
+                }, 2000);
+            });
+        }
+        
+        function copyTextStr(text, btn) {
+            navigator.clipboard.writeText(text).then(() => {
+                const icon = btn.querySelector('i');
+                icon.className = 'fa-solid fa-check text-brutal-lime';
+                setTimeout(() => {
+                    icon.className = 'fa-regular fa-copy';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
